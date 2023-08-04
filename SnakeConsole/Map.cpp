@@ -10,6 +10,12 @@ void Map::MoveXY(int x, int y)
 	pos.X = x;
 	pos.Y = y;
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), pos);
+
+	CONSOLE_CURSOR_INFO curs = { 0 };
+	curs.dwSize = sizeof(curs);
+	curs.bVisible = FALSE;
+	::SetConsoleCursorInfo(::GetStdHandle(STD_OUTPUT_HANDLE), &curs);
+
 }
 
 void Map::PutSimbol(int x, int y, char simbol)
